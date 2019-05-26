@@ -1,9 +1,12 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "raalzz.com",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Personal WebSite",
+  "version": "1.0.0",
+  "author": "Rahul Sawant <hi@raalzz.com>",
+  "bugs": {
+    "url": "https://github.com/Raalzz/Raalzz/issues"
+  },
   "dependencies": {
     "gatsby": "^2.7.1",
     "gatsby-image": "^2.1.1",
@@ -21,14 +24,14 @@
   "devDependencies": {
     "prettier": "^1.17.1"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "homepage": "https://raalzz.com",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "dev": "gatsby develop",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "build": "rm -rf public && rm -rf .cache && gatsby build",
+    "now-build": "gatsby build",
+    "format": "prettier --write '{gatsby-*.js,src/**/*.{js,jsx,json,css}}'",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
@@ -36,8 +39,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
