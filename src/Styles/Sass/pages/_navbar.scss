@@ -1,0 +1,36 @@
+.navbar {
+  margin: 0;
+  background-color: deepskyblue;
+  color: white;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  li {
+    padding: 15px;
+    &.logo {
+      position: relative;
+      width: 150px;
+      overflow: hidden;
+      margin-right: auto;
+      a {
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s;
+        & + a {
+          top: 100%;
+        }
+      }
+      &:hover {
+        a {
+          transform: translateY(-100%);
+        }
+      }
+    }
+  }
+}
