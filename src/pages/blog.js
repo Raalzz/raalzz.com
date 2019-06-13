@@ -6,11 +6,12 @@ import SEO from "../components/seo"
 import Layout from "../components/Layout/Layout"
 
 const BlogIndex = props => {
-  const posts = get("props.data.allMarkdownRemark.edges")
+  console.log(props)
+  const posts = props.data.allMarkdownRemark.edges
 
   return (
     <Layout location={props.location}>
-      <SEO />
+      <SEO title="Blog" />
       {posts.map(({ node }) => {
         const title = get(node, "frontmatter.title") || node.fields.slug
         return (
