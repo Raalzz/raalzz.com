@@ -3,18 +3,32 @@ module.exports = {
   siteMetadata: {
     title: `Raalzz`,
     author: `Rahul Sawant`,
-    description: `Trying to write Something`,
+    siteUrl: `https://raalzz.com`,
+    description:
+      "I have started writing about React, React Native, GraphQL, aws and some random stuff",
+    social: {
+      twitter: `@Raalzz`,
+    },
   },
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-catch-links`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
       },
     },
     {

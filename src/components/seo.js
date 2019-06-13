@@ -1,73 +1,92 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ meta, image, title, description, slug }) {
   const { site } = useStaticQuery(
     graphql`
-      query {
+      query GetSiteMetadata {
         site {
           siteMetadata {
             title
-            description
             author
+            description
+            siteUrl
+            social {
+              twitter
+            }
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const { siteMetadata } = site
+  const metaDescription = description || siteMetadata.description
+  const metaImage = image ? `${siteMetadata.siteUrl}/${image}` : null
+  const url = `${siteMetadata.siteUrl}${slug}`
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={site.siteMetadata.title}
-      titleTemplate={`%s | ${title}`}
+      htmlAttributes={{ lang: "en" }}
+      {...(title
+        ? {
+            titleTemplate: `%s — ${siteMetadata.title}`,
+            title,
+          }
+        : {
+            title: `${siteMetadata.title} — Blog by Rahul Sawant`,
+          })}
       meta={[
         {
-          name: `description`,
+          name: "description",
           content: metaDescription,
         },
         {
-          property: `og:title`,
-          content: title,
+          property: "og:url",
+          content: url,
         },
         {
-          property: `og:description`,
+          property: "og:title",
+          content: title || siteMetadata.title,
+        },
+        {
+          name: "og:description",
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          name: "twitter:card",
+          content: "summary",
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          name: "twitter:creator",
+          content: siteMetadata.social.twitter,
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          name: "twitter:title",
+          content: title || siteMetadata.title,
         },
         {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
+          name: "twitter:description",
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]
+        .concat(
+          metaImage
+            ? [
+                {
+                  property: "og:image",
+                  content: metaImage,
+                },
+                {
+                  name: "twitter:image",
+                  content: metaImage,
+                },
+              ]
+            : []
+        )
+        .concat(meta)}
     />
   )
 }
