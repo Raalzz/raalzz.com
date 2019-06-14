@@ -12,30 +12,47 @@ const BlogIndex = props => {
   return (
     <Layout location={props.location}>
       <SEO title="Blog" />
-      {posts.map(({ node }) => {
-        const title = get(node, "frontmatter.title") || node.fields.slug
-        return (
-          <div key={node.fields.slug} css={{ marginBottom: "5px" }}>
-            <h2 style={{ marginBottom: "5px" }}>
-              <Link
-                style={{ boxShadow: "none", color: `inherit` }}
-                to={node.fields.slug}
-              >
-                {title}
-              </Link>
-            </h2>
-            <div
-              style={{
-                display: `block`,
-                marginBottom: "5px",
-              }}
-            >
-              {node.frontmatter.date}
-            </div>
-            <p dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }} />
+      <div id="blog">
+        <div className="container">
+          <div className="post_list">
+            {posts.map(({ node }) => {
+              const title = get(node, "frontmatter.title") || node.fields.slug
+              return (
+                <div
+                  className="post_item"
+                  key={node.fields.slug}
+                  css={{ marginBottom: "5px" }}
+                >
+                  <div className="post_image" />
+                  <div className="post_desc">
+                    <h2 style={{ marginBottom: "5px" }}>
+                      <Link
+                        style={{ boxShadow: "none", color: `inherit` }}
+                        to={node.fields.slug}
+                      >
+                        {title}
+                      </Link>
+                    </h2>
+                    <div
+                      style={{
+                        display: `block`,
+                        marginBottom: "5px",
+                      }}
+                    >
+                      {node.frontmatter.date}
+                    </div>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: node.frontmatter.spoiler,
+                      }}
+                    />
+                  </div>
+                </div>
+              )
+            })}
           </div>
-        )
-      })}
+        </div>
+      </div>
     </Layout>
   )
 }
