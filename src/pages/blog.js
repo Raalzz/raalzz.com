@@ -32,7 +32,7 @@ const BlogIndex = props => {
             >
               {node.frontmatter.date}
             </div>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            <p dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }} />
           </div>
         )
       })}
