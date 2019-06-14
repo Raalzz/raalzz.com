@@ -1,13 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
+import logo from "../../images/logo.svg"
+import r_logo from "../../images/r_logo.svg"
 
 const Navbar = () => {
   return (
-    <div>
+    <div id="navbar">
       <ul className="navbar">
         <li className="logo">
-          <Link to="/">Raalzz</Link>
-          <Link to="/">R</Link>
+          <Link to="/">
+            <img src={logo} alt={logo} />
+          </Link>
+          <Link to="/">
+            <img src={r_logo} alt={r_logo} />
+          </Link>
         </li>
         <li>
           <Link to="/about">About</Link>

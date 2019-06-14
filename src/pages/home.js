@@ -6,9 +6,11 @@ import SEO from "../components/seo"
 const Home = () => (
   <Layout>
     <SEO title="Home" />
-    <div className="container">
-      <h3>Hi people</h3>
-      <h2>This is Rahul Sawant</h2>
+    <div className="home">
+      <div className="overlay">
+        <h2>Rahul Sawant</h2>
+      </div>
+      <div className="bgimg" />
     </div>
   </Layout>
 )

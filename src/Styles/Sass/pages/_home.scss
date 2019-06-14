@@ -1,0 +1,35 @@
+.home {
+  .bgimg {
+    height: 100vh;
+    background-image: url(../../images/bg.jpg);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    @include respondToBelow(sm) {
+      background-size: auto 100%;
+    }
+  }
+  .overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba($black_bg, 0.5) 15%,
+      rgba($dark_base_color, 0.5) 100%
+    );
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    h2 {
+      text-transform: uppercase;
+      font-size: 4vw;
+      letter-spacing: 10px;
+      font-weight: 900;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
