@@ -35,21 +35,16 @@ const BlogPostTemplate = props => {
               alt={post.frontmatter.title}
             />
           </div>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr style={{ marginBottom: "5px" }} />
+          <div
+            className="mark_down"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
 
-          <ul
-            style={{
-              margin: 0,
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-              listStyle: "none",
-              padding: 0,
-            }}
-          >
+          <hr className="post_break" />
+
+          <ul className="post_nav">
             {previous && (
-              <li>
+              <li className="prev_li">
                 <Link to={previous.fields.slug} rel="prev">
                   ← {previous.frontmatter.title}
                 </Link>
@@ -57,7 +52,7 @@ const BlogPostTemplate = props => {
             )}
 
             {next && (
-              <li>
+              <li className="next_li">
                 <Link to={next.fields.slug} rel="next">
                   {next.frontmatter.title} →
                 </Link>
