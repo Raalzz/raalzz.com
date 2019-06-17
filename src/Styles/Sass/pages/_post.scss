@@ -7,6 +7,11 @@
     margin: 0 !important;
     color: $dark_base_color;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+
+    @include respondToBelow(sm) {
+      font-size: 30px;
+      line-height: 1.5;
+    }
   }
   .time_stamp {
     margin: 0 0 15px !important;

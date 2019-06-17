@@ -5,10 +5,10 @@ title: "My first Hackathon Experience"
 author: "Raalzz"
 cover_img: "./cover.jpg"
 random: "this is random"
-spoiler: "It all started when my boss told that he is mentoring in AngelHack 2019: Bangalore. I always wanted to participate in Hackathons but never got an opportunity to contribute my skills to the team. I thought this is my good chance to experience the over..."
+spoiler: "It all started when my Mentor told that he is mentoring in AngelHack 2019: Bangalore. I always wanted to participate in Hackathons but never got an opportunity to contribute my skills to the team. I thought this is my good chance to experience the over..."
 ---
 
-It all started when my boss [Prashanth](https://twitter.com/prashanth "Prashanth HN") told that he is mentoring in [AngelHack 2019: Bangalore](https://www.hackathon.io/angelhack-2019-bangalore "AngelHack 2019: Bangalore"). I always wanted to participate in Hackathons but never got an opportunity to contribute my skills to the team. I thought this is my good chance to experience the overnight coding challenges, working as a team player, handling responsibilities. So I decided to participate in Angel Hack 2019.
+It all started when my Mentor [Prashanth](https://twitter.com/prashanth "Prashanth HN") told that he is mentoring in [AngelHack 2019: Bangalore](https://www.hackathon.io/angelhack-2019-bangalore "AngelHack 2019: Bangalore"). I always wanted to participate in Hackathons but never got an opportunity to contribute my skills to the team. I thought this is my good chance to experience the overnight coding challenges, working as a team player, handling responsibilities. So I decided to participate in Angel Hack 2019.
 
 ### **Team:**
 

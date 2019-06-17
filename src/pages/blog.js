@@ -12,7 +12,7 @@ const BlogIndex = props => {
   return (
     <Layout location={props.location}>
       <SEO title="Blog" />
-      <div id="blog" className="block-startna">
+      <div id="blog" className="block-start">
         <div className="container">
           <div className="post_list">
             {posts.map(({ node }) => {
@@ -31,8 +31,8 @@ const BlogIndex = props => {
                     }}
                     className="post_image"
                   />
-                  <div className="post_desc">
-                    <h2 style={{ marginBottom: "5px" }}>
+                  <div className="blog_ttl_ts">
+                    <h2 className="blog_ttl" style={{ marginBottom: "5px" }}>
                       <Link
                         style={{ boxShadow: "none", color: `inherit` }}
                         to={node.fields.slug}
@@ -49,6 +49,8 @@ const BlogIndex = props => {
                     >
                       {node.frontmatter.date}
                     </div>
+                  </div>
+                  <div className="post_desc">
                     <p
                       dangerouslySetInnerHTML={{
                         __html: node.frontmatter.spoiler,

@@ -53,4 +53,16 @@
   input {
     display: none;
   }
+  @include respondToBelow(sm) {
+    right: 0;
+    bottom: 0;
+    height: 50px;
+    border-radius: 0;
+    width: 25%;
+    background-size: 30px !important;
+    background-color: rgba(#fff, 0.75) !important;
+    .dark & {
+      background-color: rgba($black_bg, 0.85) !important;
+    }
+  }
 }

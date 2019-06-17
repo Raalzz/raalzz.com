@@ -4,6 +4,11 @@
   right: 0;
   top: 0;
   z-index: 999;
+  background: rgba(#fff, 0.75);
+  .dark & {
+    background: rgba($black_bg, 0.85);
+  }
+
   .navbar {
     margin: 0;
     color: $dark_base_color;
@@ -27,6 +32,9 @@
         height: 100px;
         overflow: hidden;
         margin-right: auto;
+        @include respondToBelow(sm) {
+          height: 75px;
+        }
         a {
           height: 100%;
           width: 100%;
@@ -51,6 +59,36 @@
           a {
             transform: translateY(-100%);
           }
+        }
+      }
+    }
+  }
+  @include respondToBelow(sm) {
+    top: auto;
+    bottom: 0;
+    right: 25%;
+    .navbar {
+      padding: 0 15px;
+      li {
+        padding: 0;
+        line-height: 50px;
+        height: 50px;
+        text-align: center;
+        flex: 1 0 0;
+      }
+      .logo {
+        position: fixed !important;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 100% !important;
+        background: rgba(#fff, 0.75);
+        .dark & {
+          background: rgba($black_bg, 0.85);
+        }
+        img {
+          width: auto;
+          height: 30px !important;
         }
       }
     }

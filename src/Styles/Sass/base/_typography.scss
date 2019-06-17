@@ -134,4 +134,7 @@ code {
 
 .block-start {
   padding-top: 100px;
+  @include respondToBelow(sm) {
+    padding: 75px 15px;
+  }
 }
