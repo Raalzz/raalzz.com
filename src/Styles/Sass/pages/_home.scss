@@ -25,11 +25,32 @@
     align-items: center;
     justify-content: center;
     h2 {
+      font-family: inherit;
       text-transform: uppercase;
       font-size: 4vw;
       letter-spacing: 10px;
       font-weight: 900;
       text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     }
+  }
+}
+
+.theme-toggle {
+  cursor: pointer;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  transition: all 0.25s;
+  background: url(../../images/bulbon.svg) center no-repeat;
+  background-size: 50px !important;
+  .dark & {
+    background: url(../../images/bulboff.svg) center no-repeat;
+  }
+  font-size: 0;
+  input {
+    display: none;
   }
 }

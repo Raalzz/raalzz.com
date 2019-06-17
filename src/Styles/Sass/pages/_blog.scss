@@ -1,16 +1,20 @@
 #blog {
-  padding-top: 200px;
+  padding-top: 100px;
   .container {
     max-width: 700px;
   }
   .post_list {
     .post_item {
       display: flex;
-      margin-bottom: 50px;
+      margin-bottom: 100px;
+      align-items: center;
       .post_image {
         height: 125px;
         min-width: 125px;
-        background: #eeeeee;
+        background-color: #eeeeee;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         @include theme-shadow;
         border-radius: 50%;
         margin-right: 25px;
@@ -18,7 +22,18 @@
       .post_desc {
         flex-grow: 1;
         h2 {
-          margin: 0 0 15px;
+          font-size: 25px;
+          margin: 0 !important;
+          text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+          color: $dark_base_color;
+        }
+        .time_stamp {
+          margin: 0 0 15px !important;
+          font-size: 14px;
+          color: var(--textNormal);
+        }
+        > p {
+          color: var(--textTitle);
         }
       }
       &:nth-child(even) {

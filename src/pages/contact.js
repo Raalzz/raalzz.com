@@ -7,8 +7,10 @@ const Contact = () => {
   return (
     <Layout>
       <SEO title="Contact" />
-      <div>
-        <h1>This is Contact Page</h1>
+      <div className="block-start" id="contact">
+        <div className="container">
+          <h1>This is Contact Page</h1>
+        </div>
       </div>
     </Layout>
   )

@@ -23,6 +23,10 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                   frontmatter {
                     title
+                    cover_img {
+                      publicURL
+                    }
+                    random
                   }
                 }
               }

@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { ThemeToggler } from "gatsby-plugin-dark-mode"
 
 import Navbar from "./Navbar"
 import "../../Styles/Sass/main.scss"
@@ -22,6 +23,18 @@ const Layout = ({ children }) => {
       <div>
         <main>{children}</main>
       </div>
+      <ThemeToggler>
+        {({ theme, toggleTheme }) => (
+          <label className="theme-toggle">
+            <input
+              type="checkbox"
+              onChange={e => toggleTheme(e.target.checked ? "dark" : "light")}
+              checked={theme === "dark"}
+            />
+            Dark mode
+          </label>
+        )}
+      </ThemeToggler>
     </Fragment>
   )
 }

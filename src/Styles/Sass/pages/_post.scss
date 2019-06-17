@@ -1,0 +1,21 @@
+#post {
+  .container {
+    max-width: 700px;
+  }
+  .post_title {
+    font-size: 40px;
+    margin: 0 !important;
+    color: $dark_base_color;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+  }
+  .time_stamp {
+    margin: 0 0 15px !important;
+    font-size: 14px;
+    color: #999999;
+  }
+  .ind_img {
+    img {
+      margin-bottom: 25px;
+    }
+  }
+}

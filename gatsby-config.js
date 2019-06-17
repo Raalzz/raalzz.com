@@ -10,6 +10,7 @@ module.exports = {
   },
   pathPrefix: `/`,
   plugins: [
+    `gatsby-plugin-dark-mode`,
     `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

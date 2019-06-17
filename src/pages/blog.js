@@ -12,7 +12,7 @@ const BlogIndex = props => {
   return (
     <Layout location={props.location}>
       <SEO title="Blog" />
-      <div id="blog">
+      <div id="blog" className="block-startna">
         <div className="container">
           <div className="post_list">
             {posts.map(({ node }) => {
@@ -23,7 +23,14 @@ const BlogIndex = props => {
                   key={node.fields.slug}
                   css={{ marginBottom: "5px" }}
                 >
-                  <div className="post_image" />
+                  <div
+                    style={{
+                      backgroundImage: `url(${
+                        node.frontmatter.cover_img.publicURL
+                      })`,
+                    }}
+                    className="post_image"
+                  />
                   <div className="post_desc">
                     <h2 style={{ marginBottom: "5px" }}>
                       <Link
@@ -34,6 +41,7 @@ const BlogIndex = props => {
                       </Link>
                     </h2>
                     <div
+                      className="time_stamp"
                       style={{
                         display: `block`,
                         marginBottom: "5px",
@@ -78,6 +86,10 @@ export const pageQuery = graphql`
             date(formatString: "DD MMMM, YYYY")
             title
             spoiler
+            cover_img {
+              publicURL
+            }
+            random
           }
         }
       }
