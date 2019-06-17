@@ -3,16 +3,16 @@ path: "/post-one"
 date: "2019-05-31"
 title: "My first Hackathon Experience"
 author: "Raalzz"
-cover_img: "./post1.jpg"
+cover_img: "./cover.jpg"
 random: "this is random"
 spoiler: "It all started when my boss told that he is mentoring in AngelHack 2019: Bangalore. I always wanted to participate in Hackathons but never got an opportunity to contribute my skills to the team. I thought this is my good chance to experience the over..."
 ---
 
-It all started when my boss told that he is mentoring in AngelHack 2019: Bangalore. I always wanted to participate in Hackathons but never got an opportunity to contribute my skills to the team. I thought this is my good chance to experience the overnight coding challenges, working as a team player, handling responsibilities. So I decided to participate in Angel Hack 2019.
+It all started when my boss [Prashanth](https://twitter.com/prashanth "Prashanth HN") told that he is mentoring in [AngelHack 2019: Bangalore](https://www.hackathon.io/angelhack-2019-bangalore "AngelHack 2019: Bangalore"). I always wanted to participate in Hackathons but never got an opportunity to contribute my skills to the team. I thought this is my good chance to experience the overnight coding challenges, working as a team player, handling responsibilities. So I decided to participate in Angel Hack 2019.
 
 ### **Team:**
 
-We needed a team to work on a Unique Idea. As per the Angel Hack rules, A team must have a maximum of 5 people. So we build a team of 5 people from which 3 of us were frontend developers me, Akhil, Binu; 1 was UI/UX developer Praveen which was my colleague and other was a beginner Jash. Now, all we need is to come up with an idea which is unique, which solves the problem. All started discussing many ideas and agreed to one unique idea which our boss Prashanth HN gave. We named it as "**HoppShopp"**.
+We needed a team to work on a Unique Idea. As per the Angel Hack rules, A team must have a maximum of 5 people. So we build a team of 5 people from which 3 of us were frontend developers me, [Akhil](https://twitter.com/akhilvc10 "Akhil VC"), [Binu](https://twitter.com/binums56 "Binu Sebastian"), 1 was UI/UX developer [Praveen](https://twitter.com/onlyveen "Praveen Gorakala") which was my colleague and other was a beginner [Jash](https://www.linkedin.com/in/jash-k-mehta-786294149/ "Jash K Mehta"). Now, all we need is to come up with an idea which is unique, which solves the problem. All started discussing many ideas and agreed to one unique idea which our boss Prashanth HN gave. We named it as "**HoppShopp"**.
 
 ### **Idea:**
 
@@ -26,9 +26,13 @@ Our stack was React as a frontend and aws amplify for all the backend and auth s
 
 ### **AngelHack 2019: Bangalore :**
 
+### **Schedule :**
+
+![AngelHack 2019 Glimpses](./schedule.png "AngelHack 2019 Glimpses")
+
 ### **Day 1 :**
 
-Saturday Morning at 9:00 AM we reached the venue, It was in cowrk, Finished the registration, took some swags. the place was very good, all teams were there on the venue discussing their product, some were serious, some were having fun. I was a bit nervous by seeing all these champs. We were having our breakfast, and Harish Kotra started a welcome speech, he explained what are the rules, judging Process, Do's and Dont's. It was a good session.
+Saturday Morning at 9:00 AM we reached the venue, It was in [CoWrks](https://www.cowrks.com/ "CoWrks"), Finished the registration, took some swags. the place was very good, all teams were there on the venue discussing their product, some were serious, some were having fun. I was a bit nervous by seeing all these champs. We were having our breakfast, and [Harish Kotra](https://twitter.com/HarishKotra "Harish Kotra") started a welcome speech, he explained what are the rules, judging Process, Do's and Dont's. It was a good session.
 
 Now we have to grab a place where we can spend our time to build the product, we searched for small cabins, but by the time we went all the cabins were taken by other teams, we got a place in a bigger room where other teams were also there.
 
@@ -36,7 +40,7 @@ Praveen started his work on Prototyping the whole product, we started our work o
 
 ### **Day 2 :**
 
-We attended the session it was Good, we got a clear idea about how to compress the key feature of our product and keep in front of the judges. Finished the session and we came back to coding. I was still figuring out how to create required APIs, I called my colleague Krishna Muddi for the help, It was almost 12:30 am, but Krishna helped a lot, he was awake till 6:30 am so that we finish the backend process correctly. By 10:00 am Everything was done, All the features were working fine. We Uploaded the Project Code, Product Logo, Team members name to the given website as per angel hacks submission process.
+We attended the session it was Good, we got a clear idea about how to compress the key feature of our product and keep in front of the judges. Finished the session and we came back to coding. I was still figuring out how to create required APIs, I called my colleague [Krishna](https://www.linkedin.com/in/krishna-muddi-62207274/ "Krishna Muddi") for the help, It was almost 12:30 am, but he helped a lot, he was awake till 6:30 am so that we finish the backend process correctly. By 10:00 am Everything was done, All the features were working fine. We Uploaded the Project Code, Product Logo, Team members name to the given website as per angel hacks submission process.
 
 Our team number was 29. They called us to pitch the product, we went inside Jash started the pitch followed by me, I explained how all it works and what problem it solves. By the time I finished, it was 2 minutes we didn't have much time for QnA. We came out, it was mixed feelings. All kept their laptops inside their bag. Took a seat in the main hall, grabbed some coffee, waiting for the results.
 
@@ -48,4 +52,4 @@ It was fun, the event was well-organised kudos to Harish Kotra, Angel Hack team,
 
 Here are some glimpses :
 
-![AngelHack 2019 Glimpses](./post1.jpg "AngelHack 2019 Glimpses")
+![AngelHack 2019 Glimpses](./glimpses.png "AngelHack 2019 Glimpses")

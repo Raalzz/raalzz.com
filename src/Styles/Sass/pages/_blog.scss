@@ -69,6 +69,31 @@
       width: 100% !important;
     }
   }
+  a {
+    display: inline-block;
+    color: $dark_base_color;
+    position: relative;
+    transition: all 0.25s;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 0;
+      width: 0;
+      margin: auto;
+      z-index: -1;
+      transition: all 0.25s;
+      height: 2px;
+      background: $dark_base_color;
+    }
+    &:hover {
+      &:before {
+        width: 90%;
+      }
+    }
+  }
 }
 .post_break {
   margin-top: 100px;
