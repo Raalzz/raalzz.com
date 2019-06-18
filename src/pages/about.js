@@ -17,7 +17,11 @@ const About = () => {
           <h1>Hi, this is Rahul.</h1>
           <p>
             Currently working in a startup called{" "}
-            <a href="https://wheelsbox.com/" target="_blank" rel="nofollow">
+            <a
+              href="https://wheelsbox.com/"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
               WheelsBox
             </a>{" "}
             as a Front-end Developer. I like exploring new Techs and Hopping new
@@ -30,7 +34,7 @@ const About = () => {
             <a
               href="https://www.last.fm/user/Raalzz/"
               target="_blank"
-              rel="nofollow"
+              rel="nofollow noopener noreferrer"
             >
               last.fm
             </a>{" "}
