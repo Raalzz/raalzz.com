@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+
+#contact {
+  h2,
+  h3 {
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 20px;
+  }
+  a {
+    color: $dark_base_color;
+    font-size: 20px;
+  }
+
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px -1px;
+  }
+
+  .fa-twitter:hover {
+    color: #55acee;
+  }
+
+  .fa-github:hover {
+    color: black;
+  }
+
+  .fa-linkedin:hover {
+    color: #007bb5;
+  }
+
+  .fa-reddit:hover {
+    color: #ff5700;
+  }
+
+  .fa-lastfm:hover {
+    color: red;
+  }
+}
