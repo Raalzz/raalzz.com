@@ -6,7 +6,6 @@ import SEO from "../components/seo"
 import Layout from "../components/Layout/Layout"
 
 const BlogIndex = props => {
-  console.log(props)
   const posts = props.data.allMarkdownRemark.edges
 
   return (

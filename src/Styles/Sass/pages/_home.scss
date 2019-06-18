@@ -24,8 +24,10 @@
     color: #fff;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     h2 {
-      font-family: inherit;
+      font-family: "Gloria Hallelujah", cursive;
+      text-align: center;
       text-transform: uppercase;
       font-size: 4vw;
       letter-spacing: 10px;

@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+#typeAnim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  text-transform: none;
+  //   font-family: "Gloria Hallelujah", cursive;
+  font-family: "Source Sans Pro", sans-serif;
+}
+#typeAnim #cursor {
+  margin-left: 10px;
+  animation: typeCur 1s infinite linear;
+  height: 30px;
+  width: 3px;
+  background: #777777;
+}
+@keyframes typeCur {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  50.1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
