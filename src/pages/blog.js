@@ -90,7 +90,6 @@ export const pageQuery = graphql`
             cover_img {
               publicURL
             }
-            random
           }
         }
       }

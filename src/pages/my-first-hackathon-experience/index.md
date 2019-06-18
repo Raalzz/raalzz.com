@@ -1,10 +1,8 @@
 ---
-path: "/post-one"
 date: "2019-05-31"
 title: "My first Hackathon Experience"
 author: "Raalzz"
 cover_img: "./cover.jpg"
-random: "this is random"
 spoiler: "It all started when my Mentor told that he is mentoring in AngelHack 2019: Bangalore. I always wanted to participate in Hackathons but never got an opportunity to contribute my skills to the team. I thought this is my good chance to experience the over..."
 ---
 

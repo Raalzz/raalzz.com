@@ -26,7 +26,6 @@ exports.createPages = ({ graphql, actions }) => {
                     cover_img {
                       publicURL
                     }
-                    random
                   }
                 }
               }
