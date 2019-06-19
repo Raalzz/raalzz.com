@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
             <input
               type="checkbox"
               onChange={e => toggleTheme(e.target.checked ? "dark" : "light")}
-              checked={theme === "dark"}
+              checked={theme !== "light"}
             />
             Dark mode
           </label>
