@@ -6,17 +6,21 @@
     font-family: "Open Sans", sans-serif;
     margin-bottom: 20px;
   }
+  .or {
+    font-size: 50px;
+    opacity: 0.5;
+    margin: 50px 0;
+  }
   a {
     color: $dark_base_color;
     font-size: 20px;
-  }
-
-  .fa {
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px -1px;
+    &.fa {
+      display: inline-block;
+      margin-right: 30px;
+      font-size: 30px;
+      text-align: center;
+      text-decoration: none;
+    }
   }
 
   .fa-twitter:hover {
