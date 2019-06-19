@@ -48,12 +48,15 @@
   transition: all 0.25s;
   background: url(../../images/bulbon.svg) center no-repeat;
   background-size: 50px !important;
-  .dark & {
+  .light & {
     background: url(../../images/bulboff.svg) center no-repeat;
   }
   font-size: 0;
   input {
     display: none;
+    // &:checked {
+    //   display: block;
+    // }
   }
   @include respondToBelow(sm) {
     right: 0;
@@ -63,7 +66,7 @@
     width: 25%;
     background-size: 30px !important;
     background-color: rgba(#fff, 0.75) !important;
-    .dark & {
+    .light & {
       background-color: rgba($black_bg, 0.85) !important;
     }
   }

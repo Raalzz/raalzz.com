@@ -13,7 +13,7 @@ body {
   color: var(--textTitle);
 }
 
-body.dark {
+body.light {
   -webkit-font-smoothing: antialiased;
 
   --bg: #222227;
@@ -36,7 +36,7 @@ p {
   line-height: 1.5rem;
   margin: 0 auto;
 }
-// body.dark {
+// body.light {
 //   background: $black_bg;
 //   color: #fff;
 // }
