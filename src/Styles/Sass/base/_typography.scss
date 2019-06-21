@@ -1,7 +1,7 @@
 /*! Typebase.less v0.1.0 | MIT License */
 /* Setup */
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
-@import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Anton&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Boogaloo&display=swap");
 
 body {
   --bg: #f6f6f6;
@@ -24,7 +24,7 @@ body.light {
 
 html {
   /* Change default typefaces here */
-  font-family: "Roboto", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 16px !important;
   -webkit-font-smoothing: antialiased;
   * {
@@ -83,8 +83,7 @@ h6 {
 }
 h1,
 h2 {
-  font-family: "Anton", sans-serif;
-  font-family: "Abril Fatface", cursive;
+  font-family: "Boogaloo", cursive;
 }
 h1 {
   font-size: 40px;
