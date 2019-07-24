@@ -45,7 +45,7 @@ These platforms are useful when you get stuck into somthing and want help. I am 
 
 Yes social networks, I know you will be like " Its the place where I waste most of the time". But It all depends on how you are making use of these platforms, There are pros and cons on every platform. I know these are meant to get connected people. That's where you will get connected to people who build awesome stuff, work on cool things, share their knowledge.
 
-I don't usually get the most use of tech updates here, but one of the best platforms I love is [Twitter](https://twitter.com/ "Twitter"). Follow the right people who share their knowledge and new technology they discover. I have created my own list for updates, you can follow the list [here](https://twitter.com/Raalzz/lists/frontend-cloud-ux "Twitter List").
+I don't usually get the most use of tech updates here, but one of the best platforms I love is [Twitter](https://twitter.com/ "Twitter"). Follow the right people who share their knowledge and new technology they discover. I have created my own list for updates, you can follow the list [here](https://twitter.com/Raalzz/lists/frontend-cloud-ux/info "Twitter List").
 
 # Attending Meetups and Conferences:
 
