@@ -1,7 +1,7 @@
 /*! Typebase.less v0.1.0 | MIT License */
 /* Setup */
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Boogaloo&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 
 body {
   --bg: #f6f6f6;
@@ -24,8 +24,9 @@ body.light {
 
 html {
   /* Change default typefaces here */
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 16px !important;
+  // font-family: "Josefin Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px !important;
   -webkit-font-smoothing: antialiased;
   * {
     box-sizing: border-box;
@@ -83,11 +84,11 @@ h6 {
 }
 h1,
 h2 {
-  font-family: "Boogaloo", cursive;
+  font-family: "Josefin Sans", sans-serif;
 }
 h1 {
   font-size: 40px;
-  line-height: 4.5rem;
+  line-height: 2.5rem;
   margin-top: 3rem;
 }
 h2 {
