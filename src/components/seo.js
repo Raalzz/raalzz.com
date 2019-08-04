@@ -25,7 +25,9 @@ function SEO({ meta, image, title, description, slug }) {
   const { siteMetadata } = site
   const metaDescription = description || siteMetadata.description
   const metaImage = image ? `${siteMetadata.siteUrl}/${image}` : null
-  const url = `${siteMetadata.siteUrl}${slug}`
+  const url = slug
+    ? `${siteMetadata.siteUrl}${slug}`
+    : `${siteMetadata.siteUrl}`
 
   console.log(metaImage)
 
