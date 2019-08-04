@@ -16,6 +16,7 @@ const BlogPostTemplate = props => {
           title={post.frontmatter.title}
           description={post.frontmatter.spoiler}
           slug={post.fields.slug}
+          image={post.frontmatter.cover_img.publicURL}
         />
         <div className="container">
           <h1 className="post_title">{post.frontmatter.title}</h1>

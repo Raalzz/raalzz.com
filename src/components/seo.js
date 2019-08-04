@@ -27,6 +27,8 @@ function SEO({ meta, image, title, description, slug }) {
   const metaImage = image ? `${siteMetadata.siteUrl}/${image}` : null
   const url = `${siteMetadata.siteUrl}${slug}`
 
+  console.log(metaImage)
+
   return (
     <Helmet
       htmlAttributes={{ lang: "en" }}
