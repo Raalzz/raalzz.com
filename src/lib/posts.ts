@@ -9,6 +9,7 @@ export type PostMeta = {
   title: string;
   date: string;
   description: string;
+  coverImage: string;
 };
 
 export function getAllPosts(): PostMeta[] {
@@ -21,11 +22,17 @@ export function getAllPosts(): PostMeta[] {
       const slug = filename.replace(/\.(mdx|md)$/, "");
       const raw = fs.readFileSync(path.join(POSTS_DIR, filename), "utf-8");
       const { data } = matter(raw);
+      if (!data.coverImage) {
+        throw new Error(
+          `Missing required frontmatter field "coverImage" in ${filename}`
+        );
+      }
       return {
         slug,
         title: data.title ?? "Untitled",
         date: data.date ?? "",
         description: data.description ?? "",
+        coverImage: data.coverImage,
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -50,10 +57,16 @@ export function getPostBySlug(slug: string): PostMeta | null {
 
   const raw = fs.readFileSync(filepath, "utf-8");
   const { data } = matter(raw);
+  if (!data.coverImage) {
+    throw new Error(
+      `Missing required frontmatter field "coverImage" in ${slug}.mdx`
+    );
+  }
   return {
     slug,
     title: data.title ?? "Untitled",
     date: data.date ?? "",
     description: data.description ?? "",
+    coverImage: data.coverImage,
   };
 }

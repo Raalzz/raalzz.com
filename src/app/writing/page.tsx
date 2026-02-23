@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 
@@ -15,14 +16,22 @@ export default function Writing() {
       {posts.length === 0 ? (
         <p className="text-sm text-muted-foreground">No posts yet.</p>
       ) : (
-        <ul className="space-y-7">
+        <ul className="space-y-8">
           {posts.map((post) => (
             <li key={post.slug}>
               <Link
                 href={`/writing/${post.slug}`}
-                className="group block no-underline"
+                className="group flex items-start gap-4 no-underline"
               >
-                <div className="flex flex-col gap-1">
+                <div className="relative w-16 h-16 shrink-0 overflow-hidden rounded-md">
+                  <Image
+                    src={post.coverImage}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col gap-1 min-w-0">
                   <span className="text-xs text-muted-foreground">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",

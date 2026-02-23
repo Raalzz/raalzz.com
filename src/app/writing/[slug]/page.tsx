@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { notFound } from "next/navigation";
@@ -12,6 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} — Rahul`,
     description: post.description,
+    openGraph: {
+      images: [{ url: post.coverImage }],
+    },
   };
 }
 
@@ -26,7 +30,6 @@ export default async function PostPage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  // Dynamically import the MDX file matching the slug
   let Content: React.ComponentType;
   try {
     const mod = await import(`@/content/writing/${slug}.mdx`);
@@ -37,13 +40,24 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <article>
-      <div className="mb-8">
+      <div className="mb-6">
         <Link
           href="/writing"
           className="text-xs text-muted-foreground no-underline hover:text-foreground transition-colors"
         >
           ← Writing
         </Link>
+      </div>
+
+      {/* Cover image */}
+      <div className="relative w-full aspect-video overflow-hidden rounded-lg mb-8">
+        <Image
+          src={post.coverImage}
+          alt={post.title}
+          fill
+          className="object-cover"
+          priority
+        />
       </div>
 
       <header className="mb-8">
