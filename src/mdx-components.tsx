@@ -46,10 +46,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // You can write: ![alt](/image.png), ![alt](./image.png), or ![alt](image.png)
     img: ({ src, alt }) => <MdxImage src={src} alt={alt} />,
 
-    // Fenced code blocks (``` ``` with language) use sugar-high for
-    // syntax highlighting. Inline `code` uses plain styling.
     pre: ({ children }) => {
-      // Extract the language from the nested <code> className to show badge
       let lang = "";
       Children.forEach(children as React.ReactNode, (child) => {
         if (isValidElement(child)) {
@@ -79,13 +76,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       children?: React.ReactNode;
       className?: string;
     }) => {
-      // Fenced block — syntax-highlighted
       if (className?.startsWith("language-")) {
         return (
           <CodeBlock className={className}>{String(children)}</CodeBlock>
         );
       }
-      // Inline code
       return (
         <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">
           {children}

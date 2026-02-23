@@ -3,15 +3,10 @@ import { usePostContext } from '@/lib/post-context'
 
 function resolveSrc(src: string | undefined, slug: string | undefined): string | null {
   if (!src) return null
-  // External URLs — use as-is
   if (src.startsWith('http://') || src.startsWith('https://')) return src
-  // Already prefixed with /writing/ — use as-is
   if (src.startsWith('/writing/')) return src
-  // Starts with / — prepend /writing/{slug}
   if (src.startsWith('/') && slug) return `/writing/${slug}${src}`
-  // Starts with ./ — strip the dot and prepend /writing/{slug}
   if (src.startsWith('./') && slug) return `/writing/${slug}/${src.slice(2)}`
-  // Plain filename — prepend /writing/{slug}/
   if (slug) return `/writing/${slug}/${src}`
   return src
 }
