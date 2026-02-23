@@ -4,6 +4,13 @@ import matter from "gray-matter";
 
 const POSTS_DIR = path.join(process.cwd(), "src/content/writing");
 
+function resolveCoverImage(coverImage: string, slug: string): string {
+  if (coverImage.startsWith("/")) {
+    return `/writing/${slug}${coverImage}`;
+  }
+  return coverImage;
+}
+
 export type PostMeta = {
   slug: string;
   title: string;
@@ -32,7 +39,7 @@ export function getAllPosts(): PostMeta[] {
         title: data.title ?? "Untitled",
         date: data.date ?? "",
         description: data.description ?? "",
-        coverImage: data.coverImage,
+        coverImage: resolveCoverImage(data.coverImage, slug)
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -50,7 +57,7 @@ export function getPostSlugs(): string[] {
 export function getPostBySlug(slug: string): PostMeta | null {
   const candidates = [
     path.join(POSTS_DIR, `${slug}.mdx`),
-    path.join(POSTS_DIR, `${slug}.md`),
+    path.join(POSTS_DIR, `${slug}.md`)
   ];
   const filepath = candidates.find((p) => fs.existsSync(p));
   if (!filepath) return null;
@@ -67,6 +74,6 @@ export function getPostBySlug(slug: string): PostMeta | null {
     title: data.title ?? "Untitled",
     date: data.date ?? "",
     description: data.description ?? "",
-    coverImage: data.coverImage,
+    coverImage: resolveCoverImage(data.coverImage, slug)
   };
 }
