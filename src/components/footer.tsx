@@ -67,7 +67,7 @@ export default function Footer() {
     <footer className="border-t border-border mt-auto">
       <div className="max-w-4xl mx-auto px-6 sm:px-10 py-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Rahul.
+          © {new Date().getFullYear()} Rahul Sawant.
         </p>
         <div className="flex items-center gap-4">
           {socialLinks.map(({ label, href, icon }) => (

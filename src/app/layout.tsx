@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rahul",
+  title: "Rahul Sawant",
   description:
     "Solutions Architect and Frontend lead at AntStack. Building web apps at the intersection of Frontend and AI.",
 };
@@ -32,8 +32,8 @@ export default function RootLayout({
       >
         {/* ── Mobile header ───────────────────────────── */}
         <header className="flex items-center gap-4 px-6 pt-6 pb-3 md:hidden">
-          <h1 className="text-sm font-bold tracking-widest uppercase text-foreground">
-            Rahul
+          <h1 className="text-sm font-bold tracking-wide text-foreground">
+            Rahul Sawant
           </h1>
         </header>
 
@@ -50,8 +50,8 @@ export default function RootLayout({
           {/* Main content */}
           <main className="py-4 md:py-0">
             {/* Desktop name */}
-            <h1 className="hidden md:block text-sm font-bold tracking-widest uppercase text-foreground mb-10">
-              Rahul
+            <h1 className="hidden md:block text-sm font-bold tracking-wide text-foreground mb-10">
+              Rahul Sawant
             </h1>
             {children}
           </main>

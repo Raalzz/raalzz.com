@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} — Rahul`,
+    title: `${post.title} — Rahul Sawant`,
     description: post.description,
     openGraph: {
       images: [{ url: post.coverImage }],
@@ -55,6 +55,7 @@ export default async function PostPage({ params }: Props) {
           src={post.coverImage}
           alt={post.title}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />

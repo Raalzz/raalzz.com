@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Writing — Rahul",
+  title: "Writing — Rahul Sawant",
   description: "Essays and thoughts on frontend, AI, and product.",
 };
 
@@ -28,6 +28,7 @@ export default function Writing() {
                     src={post.coverImage}
                     alt={post.title}
                     fill
+                    sizes="64px"
                     className="object-cover"
                   />
                 </div>
