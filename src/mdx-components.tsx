@@ -2,6 +2,7 @@ import { Children, isValidElement } from "react";
 import type { MDXComponents } from "mdx/types";
 import CodeBlock from "@/components/code-block";
 import Video from "@/components/video";
+import { MdxImage } from "@/components/mdx-image";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -44,18 +45,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => <hr className="border-border my-8" />,
 
     // ── Images ────────────────────────────────────────────
-    // Place images in public/writing/{slug}/ and reference as
-    // ![alt](/writing/my-post/image.png)
-    img: ({ src, alt }) =>
-      src ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={src}
-          alt={alt ?? ""}
-          className="w-full h-auto rounded-lg my-6 border border-border"
-          loading="lazy"
-        />
-      ) : null,
+    // Paths are auto-resolved relative to /writing/{slug}/ via PostContextProvider.
+    // You can write: ![alt](/image.png), ![alt](./image.png), or ![alt](image.png)
+    img: ({ src, alt }) => <MdxImage src={src} alt={alt} />,
 
     // ── Code blocks ───────────────────────────────────────
     // Fenced code blocks (``` ``` with language) use sugar-high for

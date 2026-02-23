@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { notFound } from "next/navigation";
+import { PostContextProvider } from "@/lib/post-context";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -75,7 +76,9 @@ export default async function PostPage({ params }: Props) {
       </header>
 
       <div className="prose-content">
-        <Content />
+        <PostContextProvider slug={slug}>
+          <Content />
+        </PostContextProvider>
       </div>
     </article>
   );
