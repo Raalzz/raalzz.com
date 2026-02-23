@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Class-based dark mode: add .dark to <html> */
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
+/* ─────────────────────────────────────────────
+   Tailwind Theme Tokens
+   Maps CSS custom properties → Tailwind utilities
+   e.g. bg-background, text-foreground, etc.
+───────────────────────────────────────────── */
+@theme {
+  /* Semantic colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "Cascadia Code", monospace;
+
+  /* Border radius scale */
+  --radius-xs: calc(var(--radius) - 6px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+
+  /* Shadows using theme colors */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+/* ─────────────────────────────────────────────
+   Light Theme (default)
+───────────────────────────────────────────── */
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --brand: oklch(0.44 0.18 155);
+}
+
+/* ─────────────────────────────────────────────
+   Dark Theme (.dark on <html>)
+───────────────────────────────────────────── */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --brand: oklch(0.75 0.22 145);
+}
+
+/* ─────────────────────────────────────────────
+   OS-level dark preference (when no .dark/.light class is set)
+───────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not(.light) {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+
+    --destructive: oklch(0.704 0.191 22.216);
+
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --brand: oklch(0.75 0.22 145);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────────────────────
+   Base Styles
+───────────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    color: var(--brand);
+    text-underline-offset: 3px;
+  }
+
+  a:hover {
+    opacity: 0.75;
+  }
 }
+
+/* ─────────────────────────────────────────────
+   Sugar-High syntax tokens (GitHub Dark palette)
+   Applied inside dark code block bg (#0d1117)
+───────────────────────────────────────────── */
+.sh__token--keyword     { color: #ff7b72; }
+.sh__token--string      { color: #a5d6ff; }
+.sh__token--comment     { color: #8b949e; font-style: italic; }
+.sh__token--jsxliterals { color: #79c0ff; }
+.sh__token--property    { color: #79c0ff; }
+.sh__token--entity      { color: #ffa657; }
+.sh__token--sign        { color: #e6edf3; }
+.sh__token--class       { color: #ffa657; }
+.sh__token--identifier  { color: #e6edf3; }

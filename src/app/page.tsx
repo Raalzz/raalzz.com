@@ -1,65 +1,48 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function About() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="space-y-5 text-sm leading-relaxed">
+      <p>
+        Hey, I&apos;m a Solutions Architect and one of the founding members of{" "}
+        <a href="https://antstack.io" target="_blank" rel="noopener noreferrer">
+          AntStack
+        </a>
+        , where I lead the Frontend team. I&apos;ve spent the last 7+ years
+        deep in the JavaScript ecosystem, building web apps and obsessing over
+        the details that make the difference between something that works and
+        something that feels right.
+      </p>
+
+      <p>
+        My day-to-day lives at the intersection of Frontend and AI. I care
+        about User Experience and Accessibility more than most people think is
+        reasonable — the web should be fast, intuitive, and built for everyone.
+        Lately, I&apos;ve been spending a lot of time exploring what AI can do
+        when you pair it with good product thinking, and I have a feeling
+        I&apos;m just getting started.
+      </p>
+
+      <p>
+        When I&apos;m not staring at a screen full of code, I&apos;m probably
+        staring at a screen full of games — PS5 is non-negotiable. I also run a
+        3D printer that I use to experiment with ideas that have no business
+        plan and no deadline, which is exactly the point. I&apos;m a big EDM
+        fan — Skrillex in particular — and I believe a good drop can fix most
+        problems. Japanese food is my weakness, Formula 1 is my religion, and
+        Bangalore is home.
+      </p>
+
+      <p>
+        You can find me on{" "}
+        <a
+          href="https://x.com/raalzz"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          X&nbsp;/&nbsp;Twitter
+        </a>{" "}
+        where I occasionally share what I&apos;m building, thinking, or
+        currently going down a rabbit hole on.
+      </p>
     </div>
   );
 }
