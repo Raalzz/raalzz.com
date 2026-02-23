@@ -6,7 +6,6 @@ import { MdxImage } from "@/components/mdx-image";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // ── Headings ──────────────────────────────────────────
     h1: ({ children }) => (
       <h1 className="text-xl font-bold mt-8 mb-4 text-foreground">{children}</h1>
     ),
@@ -17,7 +16,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <h3 className="text-sm font-semibold mt-4 mb-2 text-foreground">{children}</h3>
     ),
 
-    // ── Body text ─────────────────────────────────────────
     p: ({ children }) => (
       <p className="text-sm leading-relaxed mb-4 text-foreground">{children}</p>
     ),
@@ -44,12 +42,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     hr: () => <hr className="border-border my-8" />,
 
-    // ── Images ────────────────────────────────────────────
     // Paths are auto-resolved relative to /writing/{slug}/ via PostContextProvider.
     // You can write: ![alt](/image.png), ![alt](./image.png), or ![alt](image.png)
     img: ({ src, alt }) => <MdxImage src={src} alt={alt} />,
 
-    // ── Code blocks ───────────────────────────────────────
     // Fenced code blocks (``` ``` with language) use sugar-high for
     // syntax highlighting. Inline `code` uses plain styling.
     pre: ({ children }) => {
@@ -97,7 +93,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
 
-    // ── Video (globally available in all MDX) ─────────────
     // Usage: <Video url="https://youtube.com/watch?v=..." />
     //        <Video url="https://vimeo.com/123456" title="My video" />
     Video,

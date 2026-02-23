@@ -50,7 +50,6 @@ export default async function PostPage({ params }: Props) {
         </Link>
       </div>
 
-      {/* Cover image */}
       <div className="relative w-full aspect-video overflow-hidden rounded-lg mb-8">
         <Image
           src={post.coverImage}

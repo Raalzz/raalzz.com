@@ -30,16 +30,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col`}
       >
-        {/* ── Mobile header ───────────────────────────── */}
         <header className="flex items-center gap-4 px-6 pt-6 pb-3 md:hidden">
           <h1 className="text-sm font-bold tracking-wide text-foreground">
             Rahul Sawant
           </h1>
         </header>
 
-        {/* ── Body ────────────────────────────────────── */}
         <div className="flex-1 w-full max-w-4xl mx-auto px-6 sm:px-10 md:grid md:grid-cols-[160px_1fr] md:gap-12 md:pt-10 pb-10">
-          {/* Sidebar */}
           <aside className="flex flex-col">
             {/* Nav — horizontal on mobile, vertical on desktop */}
             <div className="md:mt-10 pb-3 md:pb-0">
@@ -47,9 +44,7 @@ export default function RootLayout({
             </div>
           </aside>
 
-          {/* Main content */}
           <main className="py-4 md:py-0">
-            {/* Desktop name */}
             <h1 className="hidden md:block text-sm font-bold tracking-wide text-foreground mb-10">
               Rahul Sawant
             </h1>
@@ -57,7 +52,6 @@ export default function RootLayout({
           </main>
         </div>
 
-        {/* ── Footer ──────────────────────────────────── */}
         <div className="w-full max-w-4xl mx-auto">
           <Footer />
         </div>
