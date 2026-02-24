@@ -1,0 +1,365 @@
+---
+title: "How to Set Up a Private Package Repository with JFrog Artifactory"
+date: "2025-04-21"
+description: "Set up your private code library with JFrog Artifactory. Step-by-step guide for secure sharing, reuse, and easy management of your internal packages."
+coverImage: "/cover.png"
+---
+
+In modern software development, reusability, modularity, and efficient dependency management are crucial for maintaining scalable applications. While public package registries like npm and Yarn offer extensive libraries, organizations often require a private package repository to securely store and manage internal dependencies. This is especially important for proprietary code, internal tooling, and controlled versioning across teams.
+
+In this guide, we will walk you through the process of setting up your own private package library using **JFrog Artifactory**—a powerful, enterprise-grade artifact repository manager. JFrog Artifactory provides a centralized and secure way to store, manage, and distribute packages.
+
+By the end of this article, you'll have a complete understanding of the workflow for setting up and managing a private package repository, enabling seamless collaboration, enhanced security, and efficient dependency management within your development process.
+
+## Why Use Private Packages?
+
+Lets understand the benefits of using private packages and how they can streamline development workflows.
+
+Organizations and developers frequently work on projects that involve sensitive, custom-built functionalities that should not be shared publicly. These could include business logic, internal tools, or frameworks that provide a competitive edge. To ensure efficiency and security, they need a way to store and manage this code while keeping it private.
+
+At the same time, large teams working on multiple applications need consistency across projects. Without a structured approach, different teams might develop similar components independently, leading to code duplication and inconsistencies in design, functionality, or security practices.
+
+Security is another major concern, especially when dealing with sensitive data, authentication mechanisms, or industry-specific compliance requirements
+
+Private package repositories address these challenges by offering:
+
+- **A Secure Storage System**: Keeping internal code protected and restricting access to authorized users only.
+- **Code Reusability**: Create components once and use them across multiple projects
+- **Centralized Package Management**: Allowing teams to maintain standardized libraries and enforce best practices.
+- **Version Control & Dependency Management**: Ensuring that updates are controlled, tested, and rolled out without breaking existing applications.
+
+By implementing a private package repository, organizations gain better control over their software ecosystem, improving development efficiency, security, and maintainability.
+
+## Prerequisites
+
+- Node.js and npm installed
+- Access to JFrog Artifactory instance
+- Basic knowledge of TypeScript and React
+- npm account with appropriate permissions
+
+## **Step 1: Initialize Your Package**
+
+Start by creating a dedicated folder for your package. The folder name should reflect your package name.
+
+```bash
+mkdir hello-world-package
+```
+
+Change to the package directory and run npm init to create a package.json file:
+
+```bash
+cd hello-world-package
+npm init
+```
+
+This command will prompt you to enter details about your package, such as:
+
+- **Package name:** A unique, scoped package name like `@your-org/hello-world` for private use.
+- **Version:** It states the version of the package.The initial version, typically set as `1.0.0` following semantic versioning.
+- **Description:** A brief summary of the package's purpose.
+- **Entry point:** The main file of the package, usually `index.js.`
+- **Test command:** A command to run tests, often `"test": "jest"` or `"test": "echo \"No tests specified\" && exit 1"`.
+- **Git repository:** The URL of the Git repository where the package is hosted, e.g., `https://github.com/your-org/hello-world.git`.
+- **Author:** The creator's name and contact email.
+- **License:** The open-source license for the package, commonly `"MIT"` or `"ISC"`.
+
+Your package.json file should look something like this:
+
+```jsx
+{
+"name": "@your-org/hello-world",
+"version": "1.0.0",
+"description": "A simple hello world package",
+"main": "index.js",
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+"author": "Author Name",
+"license": "MIT"
+}
+```
+
+## **Step 2: Install Dependencies**
+
+Install the core dependencies needed for a React TypeScript package:
+
+```bash
+// In hello-world-package folder
+npm i react react-dom --save-dev
+```
+
+These dependencies allow you to:
+
+- Build the hello world function
+- Use React for more advanced use cases later if needed
+- Your package.json file:
+
+```jsx
+{
+	"name":"@your-org/hello-world",
+	"version":"1.0.0",
+	"description":"React component library",
+	"main":"index.js",
+	"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "author":"Author Name",
+  "license":"MIT",
+  "devDependencies": {
+	  "react": "^18.3.1",
+	  "react-dom": "^18.3.1",
+  },
+   "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
+```
+
+## Step 3: Install Rollup to Bundle the Package
+
+Rollup is a highly efficient module bundler for JavaScript libraries. Install Rollup and its necessary plugins:
+
+```bash
+npm i rollup @rollup/plugin-node-resolve @rollup/plugin-commonjs @rollup/plugin-typescript rollup-plugin-peer-deps-external @rollup/plugin-terser rollup-plugin-dts rollup-plugin-postcss --save-dev
+
+```
+
+These plugins enable:
+
+- **`@rollup/plugin-node-resolve`** → Resolves modules from `node_modules`
+- **`@rollup/plugin-commonjs`** → Converts CommonJS modules to ES6
+- **`@rollup/plugin-typescript`** → Enables TypeScript support in Rollup
+- **`rollup-plugin-peer-deps-external`** → Excludes peer dependencies from the bundle
+- **`@rollup/plugin-terser`** → Minifies JavaScript for smaller file sizes
+- **`rollup-plugin-dts`** → Generates TypeScript declaration (`.d.ts`) files
+- **`rollup-plugin-postcss`** → Processes CSS files and supports module imports
+
+## Step 4: Create Rollup Configuration
+
+Create a `rollup.config.js` file in the project root and add the following configuration:
+
+```
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import terser from "@rollup/plugin-terser";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
+
+const packageJson = require("./package.json");
+
+export default [
+  {
+    input: "index.js", // Entry point for the library
+    output: [
+      {
+        file: packageJson.main, // Output file for CommonJS format
+        format: "cjs",
+        sourcemap: true,
+      },
+      {
+        file: packageJson.module, // Output file for ES Module format
+        format: "esm",
+        sourcemap: true,
+      },
+    ],
+    plugins: [
+      peerDepsExternal(), // Excludes React and other peer dependencies from the bundle
+      resolve(), // Resolves module imports
+      commonjs(), // Converts CommonJS modules to ES6
+      terser(), // Minifies the output files
+    ],
+    external: ["react", "react-dom"], // Ensures React is not bundled
+  },
+];
+
+```
+
+This configuration:
+
+- Uses index.js as the entry point
+- Outputs bundles in both CommonJS and ES Module formats
+- Generates source maps for debugging
+- Excludes React and other specified dependencies from the bundle
+
+## Step 5: Update package.json with Build Script
+
+Add the rollup build script to your package.json:
+
+```json
+{
+  "scripts": {
+    "rollup": "rollup -c --bundleConfigAsCjs", // Runs Rollup with the provided config
+    "build": "npm run rollup" // Shortcut for running the Rollup bundling process
+  }
+}
+```
+
+Also, make sure to update these essential fields in your package.json:
+
+```json
+{
+  "main": "dist/index.js", // Entry file for CommonJS
+  "module": "dist/index.mjs", // Entry file for ES Module
+  "types": "dist/index.d.ts", // TypeScript declaration file
+  "files": ["dist"], // Only include the 'dist' folder in the published package
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  }
+}
+```
+
+## Step 6: **Create a component that needs to be exported**
+
+Create a src folder and add an index.ts file in your root folder:
+
+```tsx
+// index.js
+export const helloWorld = () => {
+  return "Hello, World!";
+};
+
+// Alternatively, for a simple React component:
+import React from "react";
+export const HelloWorld = () => {
+  return <div>Hello, World!</div>;
+};
+```
+
+## Step 7: Build Your Package
+
+Run the build script to create your package bundle:
+
+- This will generate the dist folder containing your bundled package.
+
+```bash
+npm run build # Executes Rollup to generate the bundled output
+```
+
+This will generate a `dist` folder containing:
+
+- **CommonJS (`cjs`) output** → `dist/index.js`
+- **ES Module (`esm`) output** → `dist/index.mjs`
+
+## Testing Your Package Locally
+
+Before publishing to Artifactory, it's important to test your package locally:
+
+1. Build your package:
+
+   ```bash
+   npm run build
+   ```
+
+2. Create a tarball:
+
+   ```bash
+   npm pack
+   ```
+
+   This creates a .tgz file (e.g., my-custom-package-1.0.0.tgz)
+
+3. In your test application, install the tarball:
+
+   ```bash
+   npm install ../path-to/my-custom-package-1.0.0.tgz
+
+   ```
+
+4. Import and use your components in the test application to verify they work as expected.
+
+## Publishing to JFrog Artifactory
+
+Now that your package is built and tested, it's time to publish it to JFrog Artifactory with CI/CD.
+
+### Step 1: Publishing your package to Jfrog Artifactory
+
+In the root in .gitlab-ci.yml file implement this script for your package:
+
+```json
+  script:
+    - cd your-package-folder
+    - echo "@your-org:registry=https://your-artifactory-url/artifactory/api/npm/npm-local/" > .npmrc
+    - echo "//your-artifactory-url/artifactory/api/npm/npm-local/:_authToken=${JFROG_GITOPS_ACCESS_TOKEN}" >> .npmrc
+    - echo "//your-artifactory-url/artifactory/api/npm/npm-local/:always-auth=true" >> .npmrc
+    - pnpm install
+    - pnpm run rollup
+    - npm publish --registry "https://your-artifactory-url/artifactory/api/npm/npm-local/"
+
+```
+
+### Step 2: Verify in Artifactory
+
+1. Log in to your JFrog Artifactory instance
+2. Navigate to the npm-local repository
+3. Verify that your package appears with the correct version
+
+## Using Your Private Package in Projects
+
+To use your published package in other projects:
+
+1. Configure the project's .npmrc to use Artifactory:
+
+   ```
+   @your-org:registry=https://your-artifactory-url/artifactory/api/npm/npm-local/
+   //your-artifactory-url/artifactory/api/npm/npm-local/:_authToken={authToken}
+   //your-artifactory-url/artifactory/api/npm/npm-local/:always-auth=true
+
+   ```
+
+2. Install your package:
+
+   ```bash
+   npm install @your-org/component-library
+
+   ```
+
+3. Import components in your code:
+
+   ```jsx
+   import { HelloWorld } from "@your-org/component-library";
+   ```
+
+## Advanced JFrog Artifactory Features
+
+JFrog Artifactory offers several advanced features for package management:
+
+### Version Control
+
+Artifactory automatically keeps a history of all versions, allowing you to:
+
+- Revert to previous versions if needed
+- Compare differences between versions
+- See download statistics and usage patterns
+
+### Permission Management
+
+Control who can access, download, and publish packages:
+
+- Create user groups with specific permissions
+- Restrict access to certain packages
+- Configure deployment permissions
+
+### Virtual Repositories
+
+Create virtual repositories that aggregate packages from multiple sources:
+
+- Combine your private packages with public npm registry
+- Set up proxies for faster access
+- Create development vs. production repository views
+
+### Build Integration
+
+Integrate with CI/CD pipelines:
+
+- Use JFrog CLI for automated publishing
+- Generate build info and artifacts
+- Track dependencies across builds
+
+## Conclusion
+
+Creating and publishing private packages to JFrog Artifactory streamlines [development](https://www.antstack.com/application-development/) workflows and enhances code reusability. By following this guide, you can establish a robust component library that can be securely shared across your organization's projects.
+
+Remember that maintaining good documentation and semantic versioning is crucial for the successful adoption of your package. Regularly update your components and communicate changes clearly to maintain a healthy package ecosystem within your organization.
+
+With your private package properly set up in JFrog Artifactory, you now have a scalable, secure, and efficient way to share code across your organization.

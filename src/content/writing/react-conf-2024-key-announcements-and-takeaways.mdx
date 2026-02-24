@@ -1,0 +1,70 @@
+---
+title: "React Conf 2024 - Key Announcements and Takeaways"
+date: "2024-05-20"
+description: "React Conf 2024 showcased thrilling updates like the open-source React Compiler, React 19, and React Native’s New Architecture in beta. Dive into the latest advancements and key takeaways from the event in this blog post."
+coverImage: "/cover.jpg"
+---
+
+The React Conf 2024 was a spectacular event, bringing together developers, enthusiasts, and experts from all over the world. The event was filled with exciting news, informative talks, and new developments in the world of React. In this blog post, We'll go over the key highlights and takeaways from the conference, giving you an overview of everything that you need to know.
+
+## React Compiler
+
+React Compiler goes open source..🚀🚀. This is the new experimental tool still being tested, Its main job is to optimise the React app in build-time automatically.
+By using React Compiler we make our React Application more performant without needing any manual memoization with minimal impacts on memory and preventing unnecessary re-renders. It works with regular JavaScript and knows the rules of React, So there is no need to rewrite your current React app to use it. If you want to experiment with the react-compiler, Understand how it works. You can play around with [React Compiler Playground](https://playground.react.dev/). To know more head over to the official documentation of [React Compiler](https://react.dev/learn/react-compiler).
+
+![React Compiler](/react_compiler.jpeg "React Compiler")
+
+## React 19
+
+The React 19 has moved from Beta to RC and is now available on npm!
+This release builds on the foundation of concurrent rendering which was released with React 18. The React 19’s new features provide powerful tools to tackle the challenges of modern web development. It includes improvements to server rendering, suspense, and hydration, along with a new core concept called actions. Here’s a rundown of what’s new:
+
+![React 19 Updates](/React_19_updates.jpeg "React 19 Updates")
+
+1. **Concurrent Rendering Enhancements:** Building on the foundation laid by React 18, React 19 continues to improve concurrent rendering. This helps manage complex coordination problems, making it easier to synchronise the application state with the UI.
+2. **Declarative APIs for Coordination:** New declarative APIs that simplify the coordination of complex tasks. For instance, React Suspense now allows developers to describe data dependencies and loading states declaratively, ensuring a smoother user experience by balancing quick content display with the need for a complete experience.
+3. **Server Components:** React 19 expands on the concept of server components, allowing developers to seamlessly integrate backend data sources while maintaining interactivity on the client side. This approach helps break down applications into small, reusable pieces, regardless of where they reside.
+4. **HTML Coordination Features:** New APIs in React 19 make it easier to compose non-visual HTML elements like document metadata, stylesheets, and async scripts directly within components. This ensures that these elements are placed in the ideal position in the HTML document, improving performance and user experience.
+5. **Improved Hydration:** React 19 introduces key improvements to hydration, making the process more tolerant of extra nodes in the body and head, which enhances compatibility with third-party scripts and browser extensions. Additionally, hydration errors are now consolidated into a single error report with a diff of the differing props and elements, making debugging easier.
+6. **Actions API:** One of the standout features of React 19 is the new Actions API, which provides a first-class pattern for asynchronously updating data in response to user input. Actions integrate deeply with React features like suspense and transitions, making it easier to implement complex UX patterns like optimistic UI and error handling.
+7. **Ref as a Regular Prop:** In a significant change, React 19 treats refs as regular props, eliminating the need for the cumbersome `forwardRef` API. This change simplifies the creation of abstractions and components that accept refs, aligning with React’s philosophy of composition.
+8. **Support for Asynchronous Functions in Transitions:** React 19 allows asynchronous functions to be passed to `startTransition` enabling more flexible and efficient state updates without blocking user input.
+
+Whether you’re working on the client or server, React 19’s new features provide powerful tools to tackle the challenges of modern web development. You can dig deeper into each concepts [here](https://react.dev/blog/2024/04/25/react-19)
+
+## React Native New Architecture
+
+React Native’s New Architecture is now in [Beta](https://github.com/reactwg/react-native-new-architecture/discussions/189)..🎉
+
+The React Native team has been reworking the core internals to allow developers to create higher-quality experiences. This revamped version, known as the **New Architecture**, has been successfully used in Meta's production apps. The New Architecture encompasses a new framework and the effort to integrate it into open source. Now, the New Architecture has been released in beta, and the team is focused on making this the default experience for the entire React Native open-source ecosystem.
+
+Some benchmarks:
+![React Native New Architechture](/rn_new_architechture.jpeg "React Native New Architechture")
+
+## React Server Components in Expo Router
+
+Expo Router is an open-source routing library for building React Native applications, It is a file-based router designed to build React apps that run seamlessly on both web and native platforms. This router uses familiar web APIs and supports nested routing, ensuring a truly native feel on different devices. Now the integration of React Server Components (RSC) with Expo Router has simplified the server-driven UI development across all platforms making it a Universal React Server Component.
+
+Overall the ongoing development of combining server components with Expo Router looks very promising paving the way for more efficient and powerful app development across platforms.
+
+## Remix V3 === React Router V7
+
+The React Router team has been working on making incremental improvements to help transition millions of React Router apps into the future without requiring a complete rewrite. They introduced a new feature called “[SPA mode](https://remix.run/docs/en/main/guides/spa-mode#spa-mode)” in Remix, which allows Remix to be used without server rendering, and they integrated the Vite compiler to make it more convenient. The team realised that Remix is essentially a React Router plus a[ Vite plugin](https://remix.run/blog/remix-vite-stable), and they decided to bring the Vite plugin over to React Router. This change will be part of React Router V7, which aims to make it easier to use all the features of React Router with the added convenience of the Vite plugin. The goal is to ensure that the transition to [React Router V7](https://remix.run/blog/merging-remix-and-react-router) is not only incremental but also does not feel like a rewrite.
+
+![React Router Remix Graphic](/react_router_remix_graphic.jpeg "React Router Remix Graphic")
+Graphic by [Jacob Paris](https://x.com/jacobmparis/status/1790904647630151889)
+
+## Real-time server components with react-party
+
+If you are thinking of building a server-driven UI with real-time capabilities, There are a lot of limitations of current server components, particularly the inability to use state and context within them. This limitation forces developers to move logic into client components, which can be cumbersome.
+To address this exact problem, a new project called React Party was introduced, aiming to bring state and context capabilities to server components, making it easier to build complex, stateful applications.
+
+_React Party is not available yet, It will be released soon.!_
+
+## RedwoodJS, now with React Server Components!
+
+RedwoodJS, a full-stack framework is designed to simplify the development process by shipping with a database and offering first-class support for data layers. Historically, this support was within the context of GraphQL, but with the introduction of React Server Components, working with data has become even more streamlined. One of the standout features of RedwoodJS is its "cell" component, which simplifies data fetching by handling various states like loading, empty, failure, and success within a single component. This approach eliminates the need for writing multiple conditionals, making the development process more efficient.
+
+Overall, the integration of React Server Components into RedwoodJS enhances its capabilities, making it an even more powerful tool for building modern web applications.
+
+Besides [RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs), there are also other projects like [waku](https://waku.gg/), [mfng](https://github.com/unstubbable/mfng), [kotekan](https://github.com/bndkt/kotekan), [tangle](https://github.com/lubieowoce/tangle), and [twofold](https://github.com/twofold-rsc/twofold) that support React Server Components.

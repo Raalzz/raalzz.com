@@ -1,0 +1,155 @@
+---
+title: "Automating Code Checks and Tests with Git Hooks"
+date: "2021-06-10"
+description: "Automate code quality checks with Git hooks. Learn how to run linters, tests, and formatters pre-commit—without relying on external tools like Husky."
+coverImage: "/cover.png"
+---
+
+When speed is everything, but quality can't be compromised, automation becomes non-negotiable. In modern development pipelines, where rapid iteration is expected and distributed teams push code around the clock, ensuring consistent quality is less about trust and more about guardrails.
+
+That’s where Git hooks act as gatekeepers, running scripts before or after specific Git events. They allow engineering teams to automate everything from code formatting and linting to running unit tests and verifying commit messages. They improve velocity and institutionalize quality.
+
+## Motivation: Why I Revisited Git Hook Automation
+
+The most common way to add checks to your codebase is to use husky and lint-staged. I have used husky many times to add git hooks to the code base it's one of the easiest ways to integrate any hooks. Recently I wanted to introduce a pre-commit hook to one of our projects. And my go-to approach was to integrate Husky and lint-staged.
+When I tried to integrate my project, The pre-commit hooks were not working as expected. After some digging, I realised that the newer version of Husky has some changes in the integration process. Husky(> V5) make use of Git's(V 2.9) `core.hooksPath` feature. Basically, it lets you tell Git to not use `.git/hooks/` but any other directory. This made me think if there is a way to do this natively?
+
+> Dive into the example code <a href="https://github.com/antstackio/git-hooks-demo" target="_blank">here</a>
+
+## Going Native with Git Hooks
+
+Git Hooks are the scripts you can place in a hooks directory to trigger any actions at certain points in Git’s execution process. These scripts can be invoked at any given points like pre-commit, post-commit, pre-push, pre-rebase etc, You can find all the available hooks <a href="https://git-scm.com/docs/githooks" target="_blank">here</a>.
+
+By default, the hooks directory is at `.git/hooks/`. If you open any of your project which is initialised by git, You can check all the sample hooks.
+
+![Git Hooks Folder Structure](/git_hooks.png "Git Hooks Folder Structure")
+
+## Implementation: Setting Up a Pre-Commit Workflow
+
+Let's create a workflow where every time someone tries to commit something, we will run some checks like Linter, Prettier and Tests. And to be more efficient we will run these steps only for the files which are staged. We can implement this pre-commit hook in 4 steps.
+
+#### Step 1 :
+
+Create a file called `.git-hooks` at the root level, Inside this folder, create any of the hook files, In our case, it will be `.git-hooks/pre-commit` with no extensions, it will be a bash file.
+
+#### Step 2 :
+
+Open `.git-hooks/pre-commit` file and paste below code.
+
+```bash
+#!/bin/sh
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+
+# run linter on staged files
+echo "Running Linter..⚒️⚒️⚒️"
+./node_modules/.bin/eslint $STAGED_FILES --quiet --fix
+LINTER_EXIT_CODE=$?
+
+# run Prettier on staged files
+echo "Running Prettier..✨✨✨"
+./node_modules/.bin/prettier $STAGED_FILES --ignore-unknown --write
+
+# add files auto-fixed by the linter and prettier
+git add -f $STAGED_FILES
+
+# check linter exit code
+if [ $LINTER_EXIT_CODE -ne 0 ]; then
+    echo "No, no, no! fix those lint errors first..😠"
+    exit 1
+else
+    echo "lint all good..👍"
+fi
+
+# run tests related to staged files
+echo "Running Tests"
+./node_modules/.bin/jest --bail --findRelatedTests $STAGED_FILES --passWithNoTests
+JEST_EXIT_CODE=$?
+
+# check jest exit code
+if [ $JEST_EXIT_CODE -ne 0 ]; then
+    echo "Please you can do better than this..🙏🙏🙏"
+    exit 1
+else
+    echo "test all good..👍"
+fi
+
+# return 0-exit code
+echo "🎉 you are a rockstar..🔥🔥🔥"
+exit 0
+```
+
+Before we go further, Let's understand some important commands from above script.
+
+- `git diff --cached --name-only` : Get all the staged file names.
+- `--diff-filter=ACMR` : Filter only `A` Added, `C` Copied, `M` Modified and `R` Renamed files.
+- `sed 's| |\\ |g'` : This will match the regex and gives the file names in the correct format.
+- `$?`: This gives the exit status of the last executed command, By convention an exit status of 0 means success, and non-zero return status means failure.
+- `git add -f $STAGED_FILES`: Add All files back if there are any modifications done by eslint auto-fix or prettier. We will use the `-f` flag to force `git add` in case if there are any empty files.
+- If everything goes well, we will print appropriate message and exit from the execution.
+
+> If you are not much aware of bash then this <a href="https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh" target="_blank">cheat sheet</a>
+> will help
+
+#### Step 3 :
+
+Now that our script is ready, We need to tell Git to point our folder( `.git-hooks` ) instead of its default folder (`.git/hooks` ), whenever the git execution process starts.
+
+To do that, we need to run the below command.
+
+```bash
+git config core.hooksPath ./.git-hooks
+```
+
+you can read more about git-config <a href="https://git-scm.com/docs/git-config" target="_blank">here</a>.
+
+#### Step 4:
+
+Our git workflow is ready to use by now, Whenever there is a commit, our pre-commit hook will kick in and runs all the checks as mentioned in the script. But every time someone clones our repository they need to make sure that they run the config command as mentioned in step 3. We can automate this process by adding this command to our package.json file as below.
+
+```json
+"scripts" : {
+			....
+			"postinstall": "git config core.hooksPath ./.git-hooks"
+			....
+			}
+```
+
+Now whenever `npm install` command is run, It will also configure `git-hooks`.
+
+> Note:
+> Sometimes we might want to skip all the checks from git hooks, We can use`--no-verify` command which will bypass any git hooks and commit-msg.
+> `git add . git commit -m "skip git hooks" —-no-verify`
+
+## References :
+
+- <a
+    href="https://blog.typicode.com/husky-git-hooks-javascript-config/"
+    target="_blank"
+  >
+    Why husky has dropped conventional JS config
+  </a>
+- <a href="https://git-scm.com/docs/githooks" target="_blank">
+    Hooks used by Git
+  </a>
+- <a
+    href="https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh"
+    target="_blank"
+  >
+    bash cheatsheet
+  </a>
+- <a href="https://explainshell.com/" target="_blank">
+    Explain shell
+  </a>
+- <a href="https://git-scm.com/docs/git-config" target="_blank">
+    git-config
+  </a>
+
+## FAQs
+
+#### 1. Can Git hooks replace CI pipelines?
+
+No, but they can complement them. Git hooks operate locally and catch issues before code even enters the CI system. They are real-time feedback, whereas CI is often a delayed response.
+
+#### 2. Will setting up hooks slow down my workflow?
+
+Only if they’re poorly configured. The key is to run checks only on staged files and keep the logic efficient. A well-set-up hook actually speeds things up by preventing larger issues down the line.
