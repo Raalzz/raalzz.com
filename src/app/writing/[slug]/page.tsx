@@ -50,7 +50,7 @@ export default async function PostPage({ params }: Props) {
         </Link>
       </div>
 
-      <div className="relative w-full aspect-video overflow-hidden rounded-lg mb-8">
+      <div className="relative w-full aspect-video max-h-[400px] overflow-hidden rounded-lg mb-8">
         <Image
           src={post.coverImage}
           alt={post.title}
