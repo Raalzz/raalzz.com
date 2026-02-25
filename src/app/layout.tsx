@@ -44,7 +44,7 @@ export default function RootLayout({
             </div>
           </aside>
 
-          <main className="py-4 md:py-0">
+          <main className="py-4 md:py-0 min-w-0">
             <h1 className="hidden md:block text-sm font-bold tracking-wide text-foreground mb-10">
               Rahul Sawant
             </h1>
