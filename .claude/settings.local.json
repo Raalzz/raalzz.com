@@ -3,7 +3,21 @@
     "allow": [
       "Bash(pnpm info:*)",
       "Bash(pnpm add:*)",
-      "Bash(pnpm build:*)"
+      "Bash(pnpm build:*)",
+      "Skill(update-config)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "for d in .agents/skills/*/; do name=$(basename \"$d\"); [ ! -e \".claude/skills/$name\" ] && ln -s \"../../.agents/skills/$name\" \".claude/skills/$name\"; done || true",
+            "statusMessage": "Syncing .agents/skills to .claude/skills..."
+          }
+        ]
+      }
     ]
   }
 }

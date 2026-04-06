@@ -6,6 +6,10 @@ description: Comment policy
 
 ## Comment Policy
 
+### Acceptable Comments
+
+- Ignore the comments If the starting of the codeblock starts with this line // Temporary comment
+
 ### Unacceptable Comments
 
 - Comments that repeat what code does
