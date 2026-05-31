@@ -14,7 +14,7 @@ That’s where Git hooks act as gatekeepers, running scripts before or after spe
 The most common way to add checks to your codebase is to use husky and lint-staged. I have used husky many times to add git hooks to the code base it's one of the easiest ways to integrate any hooks. Recently I wanted to introduce a pre-commit hook to one of our projects. And my go-to approach was to integrate Husky and lint-staged.
 When I tried to integrate my project, The pre-commit hooks were not working as expected. After some digging, I realised that the newer version of Husky has some changes in the integration process. Husky(> V5) make use of Git's(V 2.9) `core.hooksPath` feature. Basically, it lets you tell Git to not use `.git/hooks/` but any other directory. This made me think if there is a way to do this natively?
 
-> Dive into the example code <a href="https://github.com/antstackio/git-hooks-demo" target="_blank">here</a>
+> Dive into the example code <a href="https://github.com/Raalzz/git-hooks-demo" target="_blank">here</a>
 
 ## Going Native with Git Hooks
 
