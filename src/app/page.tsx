@@ -6,17 +6,17 @@ const projects = [
     tag: "Open source",
     name: "LLM Council",
     desc: "Browser-only port of Karpathy's multi-model debate. No backend, OpenRouter keys, token estimation, and markdown export."
-  },
-  {
-    tag: "GenAI",
-    name: "Agentic platform",
-    desc: "Serverless agentic workflows on AWS. Built at AntStack, now powering HashedIn clients at scale."
-  },
-  {
-    tag: "Serverless",
-    name: "Zero-infra APIs",
-    desc: "Lambda + API Gateway patterns that scale to zero and back. Battle-tested across 30+ projects."
   }
+  // {
+  //   tag: "GenAI",
+  //   name: "Agentic platform",
+  //   desc: "Serverless agentic workflows on AWS. Built at AntStack, now powering HashedIn clients at scale."
+  // },
+  // {
+  //   tag: "Serverless",
+  //   name: "Zero-infra APIs",
+  //   desc: "Lambda + API Gateway patterns that scale to zero and back. Battle-tested across 30+ projects."
+  // }
 ];
 
 const lifeTiles = [
@@ -85,7 +85,10 @@ export default function Home() {
             </p>
 
             <p className="text-[13px] text-text-3 leading-relaxed">
-              <span style={{ color: "#FA7D23" }}>Tech Architect @ HashedIn by Deloitte.</span> Former Founding Member —{" "}
+              <span className="text-accent">
+                Tech Architect @ HashedIn by Deloitte.
+              </span>{" "}
+              Former Founding Member —{" "}
               <a
                 href="https://www.linkedin.com/posts/rajeev-vasudeva-4068b5_hashedin-antstack-aiengineering-ugcPost-7467206362578460672-uZuK"
                 target="_blank"
