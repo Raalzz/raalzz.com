@@ -7,8 +7,8 @@ import { ThemeToggle } from "./theme-toggle";
 const links = [
   { href: "/", label: "work" },
   { href: "/writing", label: "writing" },
-  { href: "/talks", label: "talks" },
-  { href: "/about", label: "about" },
+  { href: "/#", label: "talks" },
+  { href: "/#", label: "about" }
 ];
 
 export default function Nav() {
@@ -19,7 +19,7 @@ export default function Nav() {
       className="sticky top-0 z-50 flex items-center justify-between px-6 sm:px-8 h-[52px]"
       style={{
         background: "var(--bg-2)",
-        borderBottom: "0.5px solid var(--border-subtle)",
+        borderBottom: "0.5px solid var(--border-subtle)"
       }}
     >
       <Link

@@ -5,7 +5,8 @@ const projects = [
   {
     tag: "Open source",
     name: "LLM Council",
-    desc: "Browser-only port of Karpathy's multi-model debate. No backend, OpenRouter keys, token estimation, and markdown export."
+    desc: "Browser-only port of Karpathy's multi-model debate. No backend, OpenRouter keys, token estimation, and markdown export.",
+    href: "https://github.com/Raalzz/llm-council-on-browser"
   }
   // {
   //   tag: "GenAI",
@@ -21,7 +22,8 @@ const projects = [
 
 const lifeTiles = [
   {
-    href: "/music",
+    // href: "/music",
+    href: "/#",
     icon: "♪",
     label: "Music",
     value: "See recent listens",
@@ -29,7 +31,8 @@ const lifeTiles = [
     arrow: "All listens →"
   },
   {
-    href: "/places",
+    // href: "/places",
+    href: "/#",
     icon: "✈",
     label: "Places",
     value: "Exploring the world",
@@ -37,7 +40,8 @@ const lifeTiles = [
     arrow: "See places →"
   },
   {
-    href: "/games",
+    // href: "/games",
+    href: "/#",
     icon: "◈",
     label: "Games",
     value: "PS5",
@@ -45,7 +49,8 @@ const lifeTiles = [
     arrow: "See games →"
   },
   {
-    href: "/uses",
+    // href: "/uses",
+    href: "/#",
     icon: "⌘",
     label: "Uses",
     value: "Gear & Setup",
@@ -112,36 +117,45 @@ export default function Home() {
 
           <div
             className="grid grid-cols-1 sm:grid-cols-3 gap-px rounded-lg overflow-hidden"
-            style={{ background: "var(--border-subtle)" }}
+            style={{ background: "var(--bg)" }}
           >
-            {projects.map(({ tag, name, desc }) => (
-              <div
-                key={name}
-                className="group card-glow bg-surface p-5 flex flex-col gap-3 cursor-default"
-              >
-                <div className="flex items-center justify-between">
-                  <span
-                    className="text-[10px] font-medium tracking-[0.08em] uppercase px-2 py-0.5 rounded-full"
-                    style={{
-                      color: "var(--accent)",
-                      background: "var(--accent-muted)",
-                      border: "0.5px solid var(--accent-border)"
-                    }}
-                  >
-                    {tag}
-                  </span>
-                  <span className="text-text-3 opacity-0 group-hover:opacity-100 transition-opacity text-sm">
-                    →
-                  </span>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-text-1 mb-1.5">
-                    {name}
-                  </h3>
-                  <p className="text-xs text-text-3 leading-relaxed">{desc}</p>
-                </div>
-              </div>
-            ))}
+            {projects.map(({ tag, name, desc, href }) => {
+              const Comp = href ? "a" : "div";
+              const linkProps = href
+                ? { href, target: "_blank", rel: "noopener noreferrer" }
+                : {};
+              return (
+                <Comp
+                  key={name}
+                  {...linkProps}
+                  className={`group card-glow bg-surface p-5 flex flex-col gap-3 no-underline ${href ? "cursor-pointer" : "cursor-default"}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span
+                      className="text-[10px] font-medium tracking-[0.08em] uppercase px-2 py-0.5 rounded-full"
+                      style={{
+                        color: "var(--accent)",
+                        background: "var(--accent-muted)",
+                        border: "0.5px solid var(--accent-border)"
+                      }}
+                    >
+                      {tag}
+                    </span>
+                    <span className="text-text-3 opacity-0 group-hover:opacity-100 transition-opacity text-sm">
+                      →
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-text-1 mb-1.5">
+                      {name}
+                    </h3>
+                    <p className="text-xs text-text-3 leading-relaxed">
+                      {desc}
+                    </p>
+                  </div>
+                </Comp>
+              );
+            })}
           </div>
         </div>
       </section>
