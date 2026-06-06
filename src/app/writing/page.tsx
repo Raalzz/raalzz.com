@@ -12,9 +12,9 @@ export default function Writing() {
   const posts = getAllPosts();
 
   return (
-    <div>
+    <div className="max-w-2xl mx-auto px-6 sm:px-8 pt-10 pb-20">
       {posts.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No posts yet.</p>
+        <p className="text-sm text-text-3">No posts yet.</p>
       ) : (
         <ul className="space-y-8">
           {posts.map((post) => (
@@ -23,7 +23,7 @@ export default function Writing() {
                 href={`/writing/${post.slug}`}
                 className="group flex items-start gap-4 no-underline"
               >
-                <div className="relative w-16 h-16 shrink-0 overflow-hidden rounded-md">
+                <div className="relative w-16 h-16 shrink-0 overflow-hidden rounded-lg">
                   <Image
                     src={post.coverImage}
                     alt={post.title}
@@ -33,17 +33,17 @@ export default function Writing() {
                   />
                 </div>
                 <div className="flex flex-col gap-1 min-w-0">
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-xs text-text-3">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
                     })}
                   </span>
-                  <h2 className="text-sm font-medium text-foreground group-hover:text-brand transition-colors">
+                  <h2 className="text-sm font-medium text-text-1 group-hover:text-accent transition-colors">
                     {post.title}
                   </h2>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-text-2 leading-relaxed">
                     {post.description}
                   </p>
                 </div>

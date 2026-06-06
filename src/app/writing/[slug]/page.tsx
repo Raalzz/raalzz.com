@@ -40,17 +40,17 @@ export default async function PostPage({ params }: Props) {
   }
 
   return (
-    <article>
+    <article className="max-w-2xl mx-auto px-6 sm:px-8 pt-10 pb-20">
       <div className="mb-6">
         <Link
           href="/writing"
-          className="text-xs text-muted-foreground no-underline hover:text-foreground transition-colors"
+          className="text-xs text-text-3 no-underline hover:text-text-1 transition-colors"
         >
           ← Writing
         </Link>
       </div>
 
-      <div className="relative w-full aspect-video max-h-[400px] overflow-hidden rounded-lg mb-8">
+      <div className="relative w-full aspect-video max-h-[400px] overflow-hidden rounded-xl mb-8">
         <Image
           src={post.coverImage}
           alt={post.title}
@@ -62,14 +62,14 @@ export default async function PostPage({ params }: Props) {
       </div>
 
       <header className="mb-8">
-        <p className="text-xs text-muted-foreground mb-2">
+        <p className="text-xs text-text-3 mb-2">
           {new Date(post.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}
         </p>
-        <h1 className="text-lg font-bold text-foreground leading-snug">
+        <h1 className="text-xl font-serif font-semibold text-text-1 leading-snug">
           {post.title}
         </h1>
       </header>

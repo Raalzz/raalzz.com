@@ -1,177 +1,184 @@
 @import "tailwindcss";
 
-/* Class-based dark mode: add .dark to <html> */
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
 
-/* ─────────────────────────────────────────────
-   Tailwind Theme Tokens
-   Maps CSS custom properties → Tailwind utilities
-   e.g. bg-background, text-foreground, etc.
-───────────────────────────────────────────── */
 @theme {
-  /* Semantic colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-brand: var(--brand);
+  /* Backgrounds */
+  --color-bg:        var(--bg);
+  --color-bg-2:      var(--bg-2);
+  --color-surface:   var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+
+  /* Borders */
+  --color-border:        var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+
+  /* Accent */
+  --color-accent:               var(--accent);
+  --color-accent-hover:         var(--accent-hover);
+  --color-accent-muted:         var(--accent-muted);
+  --color-accent-border:        var(--accent-border);
+  --color-accent-border-strong: var(--accent-border-strong);
+  --color-accent-on:            var(--accent-on);
+
+  /* Text */
+  --color-text-1: var(--text-1);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
 
   /* Typography */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, "Cascadia Code", monospace;
+  --font-sans:  var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:  var(--font-geist-mono), ui-monospace, "Cascadia Code", monospace;
+  --font-serif: "Fraunces", "Fraunces Fallback", Georgia, serif;
 
-  /* Border radius scale */
-  --radius-xs: calc(var(--radius) - 6px);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 16px);
-
-  /* Shadows using theme colors */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* Border radius */
+  --radius-sm:  2px;
+  --radius-md:  4px;
+  --radius-lg:  6px;
+  --radius-xl:  10px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
 }
 
-/* ─────────────────────────────────────────────
-   Light Theme (default)
-───────────────────────────────────────────── */
+/* ── Dark (default) ── */
 :root {
-  --radius: 0.5rem;
+  --bg:        oklch(0.09 0.025 52);
+  --bg-2:      oklch(0.12 0.025 50);
+  --surface:   oklch(0.15 0.023 50);
+  --surface-2: oklch(0.18 0.021 50);
+  --surface-3: oklch(0.22 0.018 50);
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --border:        oklch(0.26 0.020 50);
+  --border-subtle: oklch(0.19 0.018 50);
+  --border-strong: oklch(0.34 0.020 50);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --accent:               oklch(0.78 0.22 155);
+  --accent-hover:         oklch(0.68 0.22 155);
+  --accent-muted:         oklch(0.78 0.22 155 / 0.11);
+  --accent-border:        oklch(0.78 0.22 155 / 0.32);
+  --accent-border-strong: oklch(0.78 0.22 155 / 0.55);
+  --accent-on:            oklch(0.10 0.01 155);
 
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-
-  --destructive: oklch(0.577 0.245 27.325);
-
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --brand: oklch(0.44 0.18 155);
+  --text-1: oklch(0.93 0.012 70);
+  --text-2: oklch(0.64 0.014 65);
+  --text-3: oklch(0.42 0.012 60);
 }
 
-/* ─────────────────────────────────────────────
-   Dark Theme (.dark on <html>)
-───────────────────────────────────────────── */
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+/* ── Light ── */
+[data-theme="light"] {
+  --bg:        oklch(0.97 0.006 95);
+  --bg-2:      oklch(0.94 0.010 90);
+  --surface:   oklch(0.99 0.004 95);
+  --surface-2: oklch(0.92 0.012 88);
+  --surface-3: oklch(0.88 0.014 86);
 
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
+  --border:        oklch(0.84 0.012 90);
+  --border-subtle: oklch(0.90 0.008 92);
+  --border-strong: oklch(0.74 0.016 88);
 
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --accent:               oklch(0.52 0.20 155);
+  --accent-hover:         oklch(0.44 0.20 155);
+  --accent-muted:         oklch(0.52 0.20 155 / 0.09);
+  --accent-border:        oklch(0.52 0.20 155 / 0.28);
+  --accent-border-strong: oklch(0.52 0.20 155 / 0.50);
+  --accent-on:            oklch(0.98 0.004 155);
 
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-
-  --destructive: oklch(0.704 0.191 22.216);
-
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --brand: oklch(0.75 0.22 145);
+  --text-1: oklch(0.22 0.010 265);
+  --text-2: oklch(0.45 0.010 265);
+  --text-3: oklch(0.62 0.007 265);
 }
 
-/* ─────────────────────────────────────────────
-   OS-level dark preference (when no .dark/.light class is set)
-───────────────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-
-    --destructive: oklch(0.704 0.191 22.216);
-
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --brand: oklch(0.75 0.22 145);
-  }
-}
-
-/* ─────────────────────────────────────────────
-   Base Styles
-───────────────────────────────────────────── */
 @layer base {
   * {
     border-color: var(--border);
-    outline-color: var(--ring);
+    outline-color: var(--accent);
+  }
+
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--bg);
+    color: var(--text-1);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   a {
-    color: var(--brand);
+    color: var(--accent);
     text-underline-offset: 3px;
   }
 
   a:hover {
     opacity: 0.75;
   }
+
+  ::selection {
+    background: var(--accent-muted);
+    color: var(--accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 }
 
-/* ─────────────────────────────────────────────
-   Sugar-High syntax tokens (GitHub Dark palette)
-   Applied inside dark code block bg (#0d1117)
-───────────────────────────────────────────── */
+/* ── Component classes ── */
+@layer components {
+  .card-glow {
+    position: relative;
+  }
+  .card-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border-top: 1px solid var(--accent-border-strong);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .card-glow:hover::before {
+    opacity: 1;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border-subtle);
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes fadeup {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Sugar-High syntax tokens ── */
 .sh__token--keyword     { color: #ff7b72; }
 .sh__token--string      { color: #a5d6ff; }
 .sh__token--comment     { color: #8b949e; font-style: italic; }

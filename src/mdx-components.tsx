@@ -7,28 +7,28 @@ import { MdxImage } from "@/components/mdx-image";
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-      <h1 className="text-xl font-bold mt-8 mb-4 text-foreground">{children}</h1>
+      <h1 className="font-serif text-xl font-semibold mt-8 mb-4 text-text-1 leading-snug">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-base font-semibold mt-6 mb-3 text-foreground">{children}</h2>
+      <h2 className="font-serif text-lg font-semibold mt-6 mb-3 text-text-1">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-sm font-semibold mt-4 mb-2 text-foreground">{children}</h3>
+      <h3 className="text-sm font-semibold mt-4 mb-2 text-text-1">{children}</h3>
     ),
 
     p: ({ children }) => (
-      <p className="text-sm leading-relaxed mb-4 text-foreground">{children}</p>
+      <p className="text-sm leading-relaxed mb-4 text-text-2">{children}</p>
     ),
     strong: ({ children }) => (
-      <strong className="font-semibold text-foreground">{children}</strong>
+      <strong className="font-semibold text-text-1">{children}</strong>
     ),
     ul: ({ children }) => (
-      <ul className="list-disc list-outside pl-5 mb-4 space-y-1 text-sm text-foreground">
+      <ul className="list-disc list-outside pl-5 mb-4 space-y-1 text-sm text-text-2">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="list-decimal list-outside pl-5 mb-4 space-y-1 text-sm text-foreground">
+      <ol className="list-decimal list-outside pl-5 mb-4 space-y-1 text-sm text-text-2">
         {children}
       </ol>
     ),
@@ -36,11 +36,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <li className="text-sm leading-relaxed">{children}</li>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-2 border-border pl-4 text-muted-foreground italic mb-4">
+      <blockquote className="border-l-2 border-accent-border pl-4 text-text-3 italic mb-4">
         {children}
       </blockquote>
     ),
-    hr: () => <hr className="border-border my-8" />,
+    hr: () => <hr className="border-border-subtle my-8" />,
 
     // Paths are auto-resolved relative to /writing/{slug}/ via PostContextProvider.
     // You can write: ![alt](/image.png), ![alt](./image.png), or ![alt](image.png)
@@ -82,7 +82,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         );
       }
       return (
-        <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">
+        <code className="rounded-md bg-surface-2 px-1.5 py-0.5 font-mono text-xs text-text-1">
           {children}
         </code>
       );
